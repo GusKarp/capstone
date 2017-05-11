@@ -45,8 +45,8 @@ function removeArrayElement(array, index) {
 }
 
 function drawExplosion(x, y) {
-  var explosionOuter = makeCircle(x + 25, y, 50, "red", "0.3")
-  var explosionInner = makeCircle(x + 25, y, 30, "orange", "0.3")
+  var explosionOuter = makeCircle(x + 25, y, 50, "blue", "0.3")
+  var explosionInner = makeCircle(x + 25, y, 30, "purple", "0.3")
 
   setTimeout(function()
              {
@@ -64,6 +64,7 @@ function collide(player, obstacle, offsetX, offsetY) {
   if (!offsetY) {
     offsetY = 0
   }
+  if (player != undefined && obstacle != undefined) {
   if (!(getX(obstacle) + offsetX > getX(player) + Number(player.getAttribute("width"))/2
       || getX(obstacle) + Number(obstacle.getAttribute("width")) - offsetX < getX(player)
       || getY(obstacle) + offsetY > getY(player) + Number(player.getAttribute("height"))/2
@@ -73,6 +74,9 @@ function collide(player, obstacle, offsetX, offsetY) {
   else {
     return false
   }
+} else {
+  return false
+}
 }
 
 function getX(shape) {
